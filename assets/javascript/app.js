@@ -58,6 +58,22 @@ var questions = [
 		"choice3": "bedroom",
 		"choice4": "bathroom"
 	}];
-	 $("#question").append(questions[1].question);
-	 $("#btn0").html(questions[1].choice1);
- 
+	var intervalId;
+	 	
+	
+// execute nextQuestion every 25 seconds until all 8 questions in array are read
+	function nextQuestion(i){
+	 $("#question").html(questions[i].question);
+	 $("#btn0").html(questions[i].choice1);
+	 $("#btn1").html(questions[i].choice2);
+	 $("#btn2").html(questions[i].choice3);
+	 $("#btn3").html(questions[i].choice4);
+	 };
+
+	for(i = 0; i < questions.length; i++) {	
+		
+		intervalId = setInterval(nextQuestion(i), 25000);
+		console.log(questions[i].question);	 		
+	};
+
+	nextQuestion(3);
