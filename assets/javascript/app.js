@@ -58,22 +58,44 @@ var questions = [
 		"choice3": "bedroom",
 		"choice4": "bathroom"
 	}];
+	//  Variable that will hold our setInterval that runs readNext
 	var intervalId;
-	 	
-	
-// execute nextQuestion every 25 seconds until all 8 questions in array are read
-	function nextQuestion(i){
-	 $("#question").html(questions[i].question);
-	 $("#btn0").html(questions[i].choice1);
-	 $("#btn1").html(questions[i].choice2);
-	 $("#btn2").html(questions[i].choice3);
-	 $("#btn3").html(questions[i].choice4);
-	 };
+	 
+	var count = 0;
+	 
 
-	for(i = 0; i < questions.length; i++) {	
+	function newPlayer(){
+			 
+		intervalId = setInterval(readNext, 2000); 
+ 	}
+
+ 	function readNext() {
+ 		 // check if done with all questions in array
+		if (count < questions.length) {
+			$("#question").html(questions[count].question);
+			$("#btn0").html(questions[count].choice1);
+			$("#btn1").html(questions[count].choice2);
+			$("#btn2").html(questions[count].choice3);
+			$("#btn3").html(questions[count].choice4);
+			count ++;}	
+		else{
+			reset();			 
+		}
 		
-		intervalId = setInterval(nextQuestion(i), 25000);
-		console.log(questions[i].question);	 		
-	};
+	 };	
 
-	nextQuestion(3);
+	 function reset() {
+	 	count = 0;
+	 	clearInterval(intervalId);
+	  	$("#question").html("");
+		$("#btn0").html("");
+		$("#btn1").html("");
+		$("#btn2").html("");
+		$("#btn3").html("");	
+
+	 }	 
+	 
+	  
+	 
+		newPlayer();
+	  
