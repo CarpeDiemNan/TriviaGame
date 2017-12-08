@@ -1,5 +1,5 @@
  
-
+$(function() {
 // array of question objects
 var questions = [
 	{"question": "How old is Madonna?",
@@ -58,14 +58,15 @@ var questions = [
 		"choice3": "bedroom",
 		"choice4": "bathroom"
 	}];
-	//  Variable that will hold our setInterval that runs readNext
+	//  Variable that will hold setInterval that runs readNext
 	var intervalId;
 	 
-	var count = 0;
-	 
+	var count = 0;  // refers to indexes in question array
+
+	
 
 	function newPlayer(){
-			 
+	  
 		intervalId = setInterval(readNext, 2000); 
  	}
 
@@ -79,13 +80,15 @@ var questions = [
 			$("#btn3").html(questions[count].choice4);
 			count ++;}	
 		else{
-			reset();			 
+			reset();						 
 		}
+
 		
 	 };	
 
 	 function reset() {
 	 	count = 0;
+	 	 
 	 	clearInterval(intervalId);
 	  	$("#question").html("");
 		$("#btn0").html("");
@@ -93,9 +96,12 @@ var questions = [
 		$("#btn2").html("");
 		$("#btn3").html("");	
 
-	 }	 
-	 
+	 }	
+
 	  
 	 
-		newPlayer();
-	  
+	   $("#btnStart").click(newPlayer());
+		
+	   // $("#btnStart").on("click"), test();
+
+});
