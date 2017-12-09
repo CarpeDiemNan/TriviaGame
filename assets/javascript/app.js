@@ -78,7 +78,9 @@ var questions = [
 			$("#btn1").html(questions[count].choice2);
 			$("#btn2").html(questions[count].choice3);
 			$("#btn3").html(questions[count].choice4);
-			count ++;}	
+			count ++;
+
+		}	
 		else{
 			reset();						 
 		}
@@ -97,11 +99,15 @@ var questions = [
 		$("#btn3").html("");	
 
 	 }	
+	 	$(document).on("click", "#btnStart", function() {
+         newPlayer();
 
+     });
 	  
-	 
-	   $("#btnStart").click(newPlayer());
-		
+	 });
+	 //   // $("#btnStart").click(newPlayer());
+		// $(document).on("click", "#btnStart", function() {
+  //        newPlayer();
+  //    });
 	   // $("#btnStart").on("click"), test();
 
-});
